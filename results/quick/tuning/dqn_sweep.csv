@@ -1,0 +1,10 @@
+config_id,val_sharpe_mean,val_sharpe_std,val_ann_return_mean,val_max_drawdown_mean,params
+2,0.38286696176313345,,0.034174097806091375,0.15363918635884893,"{dqn.batch_size: 256, dqn.dueling: false, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,
+  dqn.hidden: [128, 64], dqn.lr: 0.0003, dqn.target_update: 500, env.dd_lambda: 1.0,
+  env.reward: drawdown, env.risk_lambda: 0.2, env.window: 5, trading.positions: [
+    0.0, 0.25, 0.5, 0.75, 1.0]}"
+0,0.040605022774416744,,0.00020544542155809253,0.1328313878503582,{}
+1,-0.08470987057134503,,-0.012331783095102633,0.17806727774430603,"{dqn.batch_size: 128, dqn.dueling: false, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,
+  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 0.25,
+  env.reward: dsr, env.risk_lambda: 0.05, env.window: 10, trading.positions: [0.0,
+    0.5, 1.0]}"

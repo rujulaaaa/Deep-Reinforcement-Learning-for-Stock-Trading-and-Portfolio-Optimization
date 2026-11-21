@@ -1,0 +1,15 @@
+algo: ddpg
+config_id: 2
+val_sharpe_mean: 1.4164801917785566
+params:
+  env.reward: dsr
+  env.risk_lambda: 0.2
+  env.dd_lambda: 1.0
+  portfolio.window: 10
+  ddpg.actor_lr: 3.0e-05
+  ddpg.critic_lr: 0.001
+  ddpg.gamma: 0.95
+  ddpg.tau: 0.001
+  ddpg.noise_sigma: 0.25
+  ddpg.batch_size: 64
+  ddpg.weight_decay: 1.0e-05

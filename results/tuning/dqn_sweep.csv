@@ -1,0 +1,62 @@
+config_id,val_sharpe_mean,val_sharpe_std,val_ann_return_mean,val_max_drawdown_mean,params
+13,0.699621273816064,0.08837184783882442,0.06415320135196285,0.12828567608655217,"{dqn.batch_size: 64, dqn.dueling: false, dqn.eps_decay_steps: 20000, dqn.gamma: 0.99,
+  dqn.hidden: [256, 128], dqn.lr: 0.001, dqn.target_update: 500, env.dd_lambda: 0.5,
+  env.reward: log_return, env.risk_lambda: 0.2, env.window: 20, trading.positions: [
+    0.0, 0.25, 0.5, 0.75, 1.0]}"
+12,0.6395082677163848,0.2217451016981085,0.05443881387391943,0.09523062258504704,"{dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 40000, dqn.gamma: 0.99,
+  dqn.hidden: [128, 64], dqn.lr: 0.001, dqn.target_update: 1000, env.dd_lambda: 0.25,
+  env.reward: risk_adjusted, env.risk_lambda: 0.05, env.window: 10, trading.positions: [
+    0.0, 0.25, 0.5, 0.75, 1.0]}"
+6,0.624027598664895,0.12513868295385172,0.05804979681445258,0.11779820782546442,"{dqn.batch_size: 128, dqn.dueling: false, dqn.eps_decay_steps: 40000, dqn.gamma: 0.95,
+  dqn.hidden: [256, 128], dqn.lr: 0.001, dqn.target_update: 500, env.dd_lambda: 1.0,
+  env.reward: dsr, env.risk_lambda: 0.05, env.window: 20, trading.positions: [0.0,
+    0.25, 0.5, 0.75, 1.0]}"
+1,0.5914757015050726,0.2970335891983916,0.05048057461371025,0.1265406114956011,"{dqn.batch_size: 128, dqn.dueling: false, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,
+  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 0.25,
+  env.reward: dsr, env.risk_lambda: 0.05, env.window: 10, trading.positions: [0.0,
+    0.5, 1.0]}"
+14,0.5792855845208243,0.18355460011202474,0.04685511905987294,0.11416137993544705,"{dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 20000, dqn.gamma: 0.9,
+  dqn.hidden: [256, 256], dqn.lr: 0.0001, dqn.target_update: 500, env.dd_lambda: 0.25,
+  env.reward: risk_adjusted, env.risk_lambda: 0.05, env.window: 5, trading.positions: [
+    0.0, 0.25, 0.5, 0.75, 1.0]}"
+10,0.5497130940490277,0.1183725354407202,0.04625837528020275,0.12383338188913912,"{dqn.batch_size: 64, dqn.dueling: false, dqn.eps_decay_steps: 20000, dqn.gamma: 0.99,
+  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 2000, env.dd_lambda: 0.25,
+  env.reward: dsr, env.risk_lambda: 0.1, env.window: 20, trading.positions: [0.0,
+    0.25, 0.5, 0.75, 1.0]}"
+11,0.5495069700558978,0.1410786515339653,0.05377728703850604,0.12572466924033152,"{dqn.batch_size: 256, dqn.dueling: false, dqn.eps_decay_steps: 40000, dqn.gamma: 0.9,
+  dqn.hidden: [128, 64], dqn.lr: 0.0003, dqn.target_update: 500, env.dd_lambda: 1.0,
+  env.reward: dsr, env.risk_lambda: 0.1, env.window: 5, trading.positions: [0.0, 0.25,
+    0.5, 0.75, 1.0]}"
+9,0.5454133423262987,0.401227958103024,0.05012838660875896,0.1270884031721151,"{dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,
+  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 1.0,
+  env.reward: log_return, env.risk_lambda: 0.2, env.window: 10, trading.positions: [
+    0.0, 0.5, 1.0]}"
+15,0.4590351303767047,0.13795998113966715,0.041314044027413864,0.15134623939721434,"{dqn.batch_size: 128, dqn.dueling: false, dqn.eps_decay_steps: 40000, dqn.gamma: 0.95,
+  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 1.0,
+  env.reward: risk_adjusted, env.risk_lambda: 0.05, env.window: 10, trading.positions: [
+    0.0, 0.25, 0.5, 0.75, 1.0]}"
+2,0.44984791159454923,0.22573525394181776,0.038254558069127954,0.14473037798419877,"{dqn.batch_size: 256, dqn.dueling: false, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,
+  dqn.hidden: [128, 64], dqn.lr: 0.0003, dqn.target_update: 500, env.dd_lambda: 1.0,
+  env.reward: drawdown, env.risk_lambda: 0.2, env.window: 5, trading.positions: [
+    0.0, 0.25, 0.5, 0.75, 1.0]}"
+4,0.43568594246400244,0.19756307004327855,0.040731062464004854,0.16545078846114838,"{dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,
+  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 500, env.dd_lambda: 0.25,
+  env.reward: log_return, env.risk_lambda: 0.05, env.window: 5, trading.positions: [
+    0.0, 0.25, 0.5, 0.75, 1.0]}"
+0,0.391525531863814,0.3717173047385048,0.030743550501019918,0.09514719413113763,{}
+7,0.3671891159209603,0.19895380354171383,0.0305679792302939,0.13562566118829741,"{dqn.batch_size: 256, dqn.dueling: true, dqn.eps_decay_steps: 40000, dqn.gamma: 0.9,
+  dqn.hidden: [128, 64], dqn.lr: 0.001, dqn.target_update: 1000, env.dd_lambda: 0.5,
+  env.reward: dsr, env.risk_lambda: 0.1, env.window: 10, trading.positions: [0.0,
+    0.5, 1.0]}"
+8,0.29484159843011587,0.10496454966382124,0.022834091963665665,0.1301197442971691,"{dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 40000, dqn.gamma: 0.95,
+  dqn.hidden: [256, 128], dqn.lr: 0.0001, dqn.target_update: 1000, env.dd_lambda: 0.25,
+  env.reward: log_return, env.risk_lambda: 0.05, env.window: 20, trading.positions: [
+    0.0, 0.5, 1.0]}"
+5,0.20819262173097378,0.33481618648298245,0.012545508118234442,0.12370076509880652,"{dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 40000, dqn.gamma: 0.95,
+  dqn.hidden: [256, 128], dqn.lr: 0.0001, dqn.target_update: 500, env.dd_lambda: 1.0,
+  env.reward: risk_adjusted, env.risk_lambda: 0.1, env.window: 10, trading.positions: [
+    0.0, 1.0]}"
+3,-0.03169731646778471,0.3056939063926563,-0.002798049491845589,0.1143132583459902,"{dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 40000, dqn.gamma: 0.95,
+  dqn.hidden: [256, 256], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 0.5,
+  env.reward: risk_adjusted, env.risk_lambda: 0.1, env.window: 20, trading.positions: [
+    0.0, 1.0]}"

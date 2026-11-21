@@ -1,0 +1,316 @@
+            start         end  trading_days  assets  ohlcv_points
+split                                                            
+train  2010-04-05  2020-12-31          2633      20        263300
+val    2021-01-01  2022-12-30           496      20         49600
+test   2023-01-02  2026-10-30           944      20         94400
+
+4073 trading days x 20 stocks = 81,460 stock-days (407,300 OHLCV values) -> 11 features per stock-day
+Tuning dqn: 16 configs x 3 seeds = 48 runs
+  [tune-dqn 1/48] done
+  [tune-dqn 2/48] done
+  [tune-dqn 3/48] done
+  [tune-dqn 4/48] done
+  [tune-dqn 5/48] done
+  [tune-dqn 6/48] done
+  [tune-dqn 7/48] done
+  [tune-dqn 8/48] done
+  [tune-dqn 9/48] done
+  [tune-dqn 10/48] done
+  [tune-dqn 11/48] done
+  [tune-dqn 12/48] done
+  [tune-dqn 13/48] done
+  [tune-dqn 14/48] done
+  [tune-dqn 15/48] done
+  [tune-dqn 16/48] done
+  [tune-dqn 17/48] done
+  [tune-dqn 18/48] done
+  [tune-dqn 19/48] done
+  [tune-dqn 20/48] done
+  [tune-dqn 21/48] done
+  [tune-dqn 22/48] done
+  [tune-dqn 23/48] done
+  [tune-dqn 24/48] done
+  [tune-dqn 25/48] done
+  [tune-dqn 26/48] done
+  [tune-dqn 27/48] done
+  [tune-dqn 28/48] done
+  [tune-dqn 29/48] done
+  [tune-dqn 30/48] done
+  [tune-dqn 31/48] done
+  [tune-dqn 32/48] done
+  [tune-dqn 33/48] done
+  [tune-dqn 34/48] done
+  [tune-dqn 35/48] done
+  [tune-dqn 36/48] done
+  [tune-dqn 37/48] done
+  [tune-dqn 38/48] done
+  [tune-dqn 39/48] done
+  [tune-dqn 40/48] done
+  [tune-dqn 41/48] done
+  [tune-dqn 42/48] done
+  [tune-dqn 43/48] done
+  [tune-dqn 44/48] done
+  [tune-dqn 45/48] done
+  [tune-dqn 46/48] done
+  [tune-dqn 47/48] done
+  [tune-dqn 48/48] done
+           val_sharpe_mean  val_sharpe_std  val_ann_return_mean  val_max_drawdown_mean                                                                                                                                                                                                                                                                                                     params
+config_id                                                                                                                                                                                                                                                                                                                                                                                        
+13                0.699621        0.088372             0.064153               0.128286         {dqn.batch_size: 64, dqn.dueling: false, dqn.eps_decay_steps: 20000, dqn.gamma: 0.99,\n  dqn.hidden: [256, 128], dqn.lr: 0.001, dqn.target_update: 500, env.dd_lambda: 0.5,\n  env.reward: log_return, env.risk_lambda: 0.2, env.window: 20, trading.positions: [\n    0.0, 0.25, 0.5, 0.75, 1.0]}
+12                0.639508        0.221745             0.054439               0.095231    {dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 40000, dqn.gamma: 0.99,\n  dqn.hidden: [128, 64], dqn.lr: 0.001, dqn.target_update: 1000, env.dd_lambda: 0.25,\n  env.reward: risk_adjusted, env.risk_lambda: 0.05, env.window: 10, trading.positions: [\n    0.0, 0.25, 0.5, 0.75, 1.0]}
+6                 0.624028        0.125139             0.058050               0.117798               {dqn.batch_size: 128, dqn.dueling: false, dqn.eps_decay_steps: 40000, dqn.gamma: 0.95,\n  dqn.hidden: [256, 128], dqn.lr: 0.001, dqn.target_update: 500, env.dd_lambda: 1.0,\n  env.reward: dsr, env.risk_lambda: 0.05, env.window: 20, trading.positions: [0.0,\n    0.25, 0.5, 0.75, 1.0]}
+1                 0.591476        0.297034             0.050481               0.126541                         {dqn.batch_size: 128, dqn.dueling: false, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,\n  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 0.25,\n  env.reward: dsr, env.risk_lambda: 0.05, env.window: 10, trading.positions: [0.0,\n    0.5, 1.0]}
+14                0.579286        0.183555             0.046855               0.114161     {dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 20000, dqn.gamma: 0.9,\n  dqn.hidden: [256, 256], dqn.lr: 0.0001, dqn.target_update: 500, env.dd_lambda: 0.25,\n  env.reward: risk_adjusted, env.risk_lambda: 0.05, env.window: 5, trading.positions: [\n    0.0, 0.25, 0.5, 0.75, 1.0]}
+10                0.549713        0.118373             0.046258               0.123833              {dqn.batch_size: 64, dqn.dueling: false, dqn.eps_decay_steps: 20000, dqn.gamma: 0.99,\n  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 2000, env.dd_lambda: 0.25,\n  env.reward: dsr, env.risk_lambda: 0.1, env.window: 20, trading.positions: [0.0,\n    0.25, 0.5, 0.75, 1.0]}
+11                0.549507        0.141079             0.053777               0.125725                  {dqn.batch_size: 256, dqn.dueling: false, dqn.eps_decay_steps: 40000, dqn.gamma: 0.9,\n  dqn.hidden: [128, 64], dqn.lr: 0.0003, dqn.target_update: 500, env.dd_lambda: 1.0,\n  env.reward: dsr, env.risk_lambda: 0.1, env.window: 5, trading.positions: [0.0, 0.25,\n    0.5, 0.75, 1.0]}
+9                 0.545413        0.401228             0.050128               0.127088                    {dqn.batch_size: 128, dqn.dueling: true, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,\n  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 1.0,\n  env.reward: log_return, env.risk_lambda: 0.2, env.window: 10, trading.positions: [\n    0.0, 0.5, 1.0]}
+15                0.459035        0.137960             0.041314               0.151346  {dqn.batch_size: 128, dqn.dueling: false, dqn.eps_decay_steps: 40000, dqn.gamma: 0.95,\n  dqn.hidden: [256, 128], dqn.lr: 0.0003, dqn.target_update: 1000, env.dd_lambda: 1.0,\n  env.reward: risk_adjusted, env.risk_lambda: 0.05, env.window: 10, trading.positions: [\n    0.0, 0.25, 0.5, 0.75, 1.0]}
+2                 0.449848        0.225735             0.038255               0.144730            {dqn.batch_size: 256, dqn.dueling: false, dqn.eps_decay_steps: 60000, dqn.gamma: 0.9,\n  dqn.hidden: [128, 64], dqn.lr: 0.0003, dqn.target_update: 500, env.dd_lambda: 1.0,\n  env.reward: drawdown, env.risk_lambda: 0.2, env.window: 5, trading.positions: [\n    0.0, 0.25, 0.5, 0.75, 1.0]}
+
+best config #13 -> /home/rujula/Projects/Finsearch/FinSearch-EndTerm/results/tuning/best_dqn.yaml
+Tuning ddpg: 16 configs x 3 seeds = 48 runs
+  [tune-ddpg 1/48] done
+  [tune-ddpg 2/48] done
+  [tune-ddpg 3/48] done
+  [tune-ddpg 4/48] done
+  [tune-ddpg 5/48] done
+  [tune-ddpg 6/48] done
+  [tune-ddpg 7/48] done
+  [tune-ddpg 8/48] done
+  [tune-ddpg 9/48] done
+  [tune-ddpg 10/48] done
+  [tune-ddpg 11/48] done
+  [tune-ddpg 12/48] done
+  [tune-ddpg 13/48] done
+  [tune-ddpg 14/48] done
+  [tune-ddpg 15/48] done
+  [tune-ddpg 16/48] done
+  [tune-ddpg 17/48] done
+  [tune-ddpg 18/48] done
+  [tune-ddpg 19/48] done
+  [tune-ddpg 20/48] done
+  [tune-ddpg 21/48] done
+  [tune-ddpg 22/48] done
+  [tune-ddpg 23/48] done
+  [tune-ddpg 24/48] done
+  [tune-ddpg 25/48] done
+  [tune-ddpg 26/48] done
+  [tune-ddpg 27/48] done
+  [tune-ddpg 28/48] done
+  [tune-ddpg 29/48] done
+  [tune-ddpg 30/48] done
+  [tune-ddpg 31/48] done
+  [tune-ddpg 32/48] done
+  [tune-ddpg 33/48] done
+  [tune-ddpg 34/48] done
+  [tune-ddpg 35/48] done
+  [tune-ddpg 36/48] done
+  [tune-ddpg 37/48] done
+  [tune-ddpg 38/48] done
+  [tune-ddpg 39/48] done
+  [tune-ddpg 40/48] done
+  [tune-ddpg 41/48] done
+  [tune-ddpg 42/48] done
+  [tune-ddpg 43/48] done
+  [tune-ddpg 44/48] done
+  [tune-ddpg 45/48] done
+  [tune-ddpg 46/48] done
+  [tune-ddpg 47/48] done
+  [tune-ddpg 48/48] done
+           val_sharpe_mean  val_sharpe_std  val_ann_return_mean  val_max_drawdown_mean                                                                                                                                                                                                                                                   params
+config_id                                                                                                                                                                                                                                                                                                                                      
+5                 1.048529        0.549822             0.268908               0.227696  {ddpg.actor_lr: 0.0001, ddpg.batch_size: 64, ddpg.critic_lr: 0.0003, ddpg.gamma: 0.99,\n  ddpg.noise_sigma: 0.25, ddpg.tau: 0.005, ddpg.weight_decay: 0.0, env.dd_lambda: 1.0,\n  env.reward: risk_adjusted, env.risk_lambda: 0.1, portfolio.window: 3}
+7                 0.912362        0.067206             0.176135               0.235401       {ddpg.actor_lr: 0.0001, ddpg.batch_size: 128, ddpg.critic_lr: 0.001, ddpg.gamma: 0.99,\n  ddpg.noise_sigma: 0.5, ddpg.tau: 0.005, ddpg.weight_decay: 0.0, env.dd_lambda: 0.25,\n  env.reward: drawdown, env.risk_lambda: 0.1, portfolio.window: 5}
+8                 0.868135        0.631970             0.198392               0.213263       {ddpg.actor_lr: 0.0003, ddpg.batch_size: 64, ddpg.critic_lr: 0.0003, ddpg.gamma: 0.9,\n  ddpg.noise_sigma: 0.25, ddpg.tau: 0.001, ddpg.weight_decay: 1.0e-05, env.dd_lambda: 0.25,\n  env.reward: dsr, env.risk_lambda: 0.05, portfolio.window: 5}
+4                 0.832017        0.514656             0.092999               0.140182    {ddpg.actor_lr: 3.0e-05, ddpg.batch_size: 64, ddpg.critic_lr: 0.0003, ddpg.gamma: 0.9,\n  ddpg.noise_sigma: 0.5, ddpg.tau: 0.01, ddpg.weight_decay: 0.0, env.dd_lambda: 0.5,\n  env.reward: risk_adjusted, env.risk_lambda: 0.1, portfolio.window: 3}
+12                0.812823        0.580946             0.195645               0.223770  {ddpg.actor_lr: 0.0001, ddpg.batch_size: 128, ddpg.critic_lr: 0.0003, ddpg.gamma: 0.9,\n  ddpg.noise_sigma: 1.0, ddpg.tau: 0.001, ddpg.weight_decay: 1.0e-05, env.dd_lambda: 0.25,\n  env.reward: drawdown, env.risk_lambda: 0.2, portfolio.window: 10}
+15                0.773976        0.487415             0.149330               0.198592  {ddpg.actor_lr: 3.0e-05, ddpg.batch_size: 256, ddpg.critic_lr: 0.0003, ddpg.gamma: 0.99,\n  ddpg.noise_sigma: 0.25, ddpg.tau: 0.001, ddpg.weight_decay: 0.0, env.dd_lambda: 0.25,\n  env.reward: log_return, env.risk_lambda: 0.2, portfolio.window: 3}
+3                 0.752153        0.371703             0.155923               0.184713    {ddpg.actor_lr: 0.0001, ddpg.batch_size: 256, ddpg.critic_lr: 0.001, ddpg.gamma: 0.9,\n  ddpg.noise_sigma: 0.5, ddpg.tau: 0.005, ddpg.weight_decay: 1.0e-05, env.dd_lambda: 0.25,\n  env.reward: drawdown, env.risk_lambda: 0.2, portfolio.window: 5}
+0                 0.712127        0.141730             0.110537               0.172113                                                                                                                                                                                                                                                       {}
+2                 0.644097        0.319308             0.121671               0.287207       {ddpg.actor_lr: 3.0e-05, ddpg.batch_size: 64, ddpg.critic_lr: 0.001, ddpg.gamma: 0.95,\n  ddpg.noise_sigma: 0.25, ddpg.tau: 0.001, ddpg.weight_decay: 1.0e-05, env.dd_lambda: 1.0,\n  env.reward: dsr, env.risk_lambda: 0.2, portfolio.window: 10}
+1                 0.534024        0.240913             0.093931               0.270727       {ddpg.actor_lr: 0.0001, ddpg.batch_size: 128, ddpg.critic_lr: 0.0003, ddpg.gamma: 0.9,\n  ddpg.noise_sigma: 0.5, ddpg.tau: 0.005, ddpg.weight_decay: 1.0e-05, env.dd_lambda: 0.25,\n  env.reward: dsr, env.risk_lambda: 0.05, portfolio.window: 5}
+
+best config #5 -> /home/rujula/Projects/Finsearch/FinSearch-EndTerm/results/tuning/best_ddpg.yaml
+
+== DQN | tuned params: {'env.reward': 'log_return', 'env.risk_lambda': 0.2, 'env.dd_lambda': 0.5, 'env.window': 20, 'trading.positions': [0.0, 0.25, 0.5, 0.75, 1.0], 'dqn.lr': 0.001, 'dqn.gamma': 0.99, 'dqn.hidden': [256, 128], 'dqn.target_update': 500, 'dqn.batch_size': 64, 'dqn.eps_decay_steps': 20000, 'dqn.dueling': False}
+  [dqn 1/30] done
+  [dqn 2/30] done
+  [dqn 3/30] done
+  [dqn 4/30] done
+  [dqn 5/30] done
+  [dqn 6/30] done
+  [dqn 7/30] done
+  [dqn 8/30] done
+  [dqn 9/30] done
+  [dqn 10/30] done
+  [dqn 11/30] done
+  [dqn 12/30] done
+  [dqn 13/30] done
+  [dqn 14/30] done
+  [dqn 15/30] done
+  [dqn 16/30] done
+  [dqn 17/30] done
+  [dqn 18/30] done
+  [dqn 19/30] done
+  [dqn 20/30] done
+  [dqn 21/30] done
+  [dqn 22/30] done
+  [dqn 23/30] done
+  [dqn 24/30] done
+  [dqn 25/30] done
+  [dqn 26/30] done
+  [dqn 27/30] done
+  [dqn 28/30] done
+  [dqn 29/30] done
+  [dqn 30/30] done
+       test_sharpe  test_ann_return  test_max_drawdown
+count       30.000           30.000             30.000
+mean        -0.064           -0.004              0.161
+std          0.347            0.024              0.029
+min         -0.728           -0.039              0.109
+25%         -0.311           -0.023              0.135
+50%         -0.074           -0.007              0.167
+75%          0.151            0.008              0.177
+max          0.553            0.051              0.226
+
+== DDPG | tuned params: {'env.reward': 'risk_adjusted', 'env.risk_lambda': 0.1, 'env.dd_lambda': 1.0, 'portfolio.window': 3, 'ddpg.actor_lr': 0.0001, 'ddpg.critic_lr': 0.0003, 'ddpg.gamma': 0.99, 'ddpg.tau': 0.005, 'ddpg.noise_sigma': 0.25, 'ddpg.batch_size': 64, 'ddpg.weight_decay': 0.0}
+  [ddpg 1/30] done
+  [ddpg 2/30] done
+  [ddpg 3/30] done
+  [ddpg 4/30] done
+  [ddpg 5/30] done
+  [ddpg 6/30] done
+  [ddpg 7/30] done
+  [ddpg 8/30] done
+  [ddpg 9/30] done
+  [ddpg 10/30] done
+  [ddpg 11/30] done
+  [ddpg 12/30] done
+  [ddpg 13/30] done
+  [ddpg 14/30] done
+  [ddpg 15/30] done
+  [ddpg 16/30] done
+  [ddpg 17/30] done
+  [ddpg 18/30] done
+  [ddpg 19/30] done
+  [ddpg 20/30] done
+  [ddpg 21/30] done
+  [ddpg 22/30] done
+  [ddpg 23/30] done
+  [ddpg 24/30] done
+  [ddpg 25/30] done
+  [ddpg 26/30] done
+  [ddpg 27/30] done
+  [ddpg 28/30] done
+  [ddpg 29/30] done
+  [ddpg 30/30] done
+       test_sharpe  test_ann_return  test_max_drawdown
+count       30.000           30.000             30.000
+mean         0.148            0.019              0.306
+std          0.468            0.085              0.114
+min         -1.208           -0.195              0.001
+25%         -0.052           -0.029              0.228
+50%          0.244            0.028              0.296
+75%          0.441            0.069              0.361
+max          1.064            0.213              0.590
+ARIMA: selecting orders by AIC on train ...
+LSTM: 30 seeds ...
+  [lstm 1/30] done
+  [lstm 2/30] done
+  [lstm 3/30] done
+  [lstm 4/30] done
+  [lstm 5/30] done
+  [lstm 6/30] done
+  [lstm 7/30] done
+  [lstm 8/30] done
+  [lstm 9/30] done
+  [lstm 10/30] done
+  [lstm 11/30] done
+  [lstm 12/30] done
+  [lstm 13/30] done
+  [lstm 14/30] done
+  [lstm 15/30] done
+  [lstm 16/30] done
+  [lstm 17/30] done
+  [lstm 18/30] done
+  [lstm 19/30] done
+  [lstm 20/30] done
+  [lstm 21/30] done
+  [lstm 22/30] done
+  [lstm 23/30] done
+  [lstm 24/30] done
+  [lstm 25/30] done
+  [lstm 26/30] done
+  [lstm 27/30] done
+  [lstm 28/30] done
+  [lstm 29/30] done
+  [lstm 30/30] done
+                    test_sharpe  test_ann_return  test_max_drawdown
+task      method                                                   
+portfolio ARIMA          -1.439           -0.194              0.564
+          Buy&Hold        0.725            0.083              0.152
+          LSTM           -0.836           -0.126              0.451
+          NIFTY 50        0.573            0.067              0.158
+trading   ARIMA           0.010           -0.004              0.206
+          Buy&Hold        0.725            0.083              0.152
+          LSTM            0.626            0.067              0.154
+          NIFTY 50        0.573            0.067              0.158
+# Results summary
+
+All numbers are on the held-out **test split** unless stated. Mean ± std across runs; deterministic methods have one run. Costs of 0.10% per unit turnover are charged to every method.
+
+## Single-stock trading (DQN, 20 stocks, equal capital)
+
+| Method | Runs | Sharpe | Ann. return | Cum. return | Max DD | Sortino |
+|---|---:|---:|---:|---:|---:|---:|
+| DQN | 30 | -0.064 ± 0.347 | -0.36% ± 2.41% | -1.05% ± 9.11% | 16.13% | -0.062 |
+| ARIMA | 1 | +0.010 | -0.39% | -1.44% | 20.58% | +0.010 |
+| LSTM | 30 | +0.626 ± 0.146 | +6.67% ± 1.86% | +27.54% ± 8.04% | 15.41% | +0.621 |
+| Buy&Hold | 1 | +0.725 | +8.26% | +34.61% | 15.21% | +0.716 |
+| NIFTY 50 | 1 | +0.573 | +6.66% | +27.33% | 15.77% | +0.558 |
+
+**DQN vs baselines (test)** — relative change of the DQN mean, and the share of the 30 DQN seeds that beat the baseline mean:
+
+| Baseline | Metric | DQN mean | Baseline mean | Abs. Δ | Relative Δ | Seeds beating |
+|---|---|---:|---:|---:|---:|---:|
+| ARIMA | sharpe | -0.064 | +0.010 | -0.074 | n/a | 43% |
+| ARIMA | ann_return | -0.36% | -0.39% | +0.02% | n/a | 47% |
+| ARIMA | cum_return | -1.05% | -1.44% | +0.38% | +26.5% | 47% |
+| LSTM | sharpe | -0.064 | +0.626 | -0.690 | -110.2% | 0% |
+| LSTM | ann_return | -0.36% | +6.67% | -7.03% | -105.4% | 0% |
+| LSTM | cum_return | -1.05% | +27.54% | -28.60% | -103.8% | 0% |
+| Buy&Hold | sharpe | -0.064 | +0.725 | -0.788 | -108.8% | 0% |
+| Buy&Hold | ann_return | -0.36% | +8.26% | -8.62% | -104.4% | 0% |
+| Buy&Hold | cum_return | -1.05% | +34.61% | -35.67% | -103.0% | 0% |
+
+## Portfolio allocation (DDPG, 20 stocks + cash)
+
+| Method | Runs | Sharpe | Ann. return | Cum. return | Max DD | Sortino |
+|---|---:|---:|---:|---:|---:|---:|
+| DDPG | 30 | +0.148 ± 0.468 | +1.93% ± 8.45% | +11.12% ± 34.52% | 30.60% | +0.156 |
+| ARIMA | 1 | -1.439 | -19.38% | -55.38% | 56.36% | -1.335 |
+| LSTM | 30 | -0.836 ± 0.260 | -12.65% ± 3.35% | -39.30% ± 9.14% | 45.11% | -0.829 |
+| Buy&Hold | 1 | +0.725 | +8.26% | +34.61% | 15.21% | +0.716 |
+| NIFTY 50 | 1 | +0.573 | +6.66% | +27.33% | 15.77% | +0.558 |
+
+**DDPG vs baselines (test)** — relative change of the DDPG mean, and the share of the 30 DDPG seeds that beat the baseline mean:
+
+| Baseline | Metric | DDPG mean | Baseline mean | Abs. Δ | Relative Δ | Seeds beating |
+|---|---|---:|---:|---:|---:|---:|
+| ARIMA | sharpe | +0.148 | -1.439 | +1.586 | +110.3% | 100% |
+| ARIMA | ann_return | +1.93% | -19.38% | +21.31% | +110.0% | 97% |
+| ARIMA | cum_return | +11.12% | -55.38% | +66.50% | +120.1% | 97% |
+| LSTM | sharpe | +0.148 | -0.836 | +0.984 | +117.7% | 97% |
+| LSTM | ann_return | +1.93% | -12.65% | +14.58% | +115.3% | 97% |
+| LSTM | cum_return | +11.12% | -39.30% | +50.42% | +128.3% | 97% |
+| Buy&Hold | sharpe | +0.148 | +0.725 | -0.577 | -79.6% | 7% |
+| Buy&Hold | ann_return | +1.93% | +8.26% | -6.32% | -76.6% | 10% |
+| Buy&Hold | cum_return | +11.12% | +34.61% | -23.49% | -67.9% | 10% |
+
+Total RL test runs: **60**.
+
+DQN tuning: 16 configurations evaluated on the validation split; best = config #13 (val Sharpe +0.700).
+
+DDPG tuning: 16 configurations evaluated on the validation split; best = config #5 (val Sharpe +1.049).
+
+Figures: `results/figures/`.

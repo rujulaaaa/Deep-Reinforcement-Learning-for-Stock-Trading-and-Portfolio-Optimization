@@ -1,0 +1,8 @@
+config_id,val_sharpe_mean,val_sharpe_std,val_ann_return_mean,val_max_drawdown_mean,params
+2,1.4164801917785566,,0.32469029182303766,0.1839507581200541,"{ddpg.actor_lr: 3.0e-05, ddpg.batch_size: 64, ddpg.critic_lr: 0.001, ddpg.gamma: 0.95,
+  ddpg.noise_sigma: 0.25, ddpg.tau: 0.001, ddpg.weight_decay: 1.0e-05, env.dd_lambda: 1.0,
+  env.reward: dsr, env.risk_lambda: 0.2, portfolio.window: 10}"
+0,0.5748198239284287,,0.05293535617801726,0.11277943811671136,{}
+1,0.3134699236355767,,0.04823257613053067,0.25494708400907085,"{ddpg.actor_lr: 0.0001, ddpg.batch_size: 128, ddpg.critic_lr: 0.0003, ddpg.gamma: 0.9,
+  ddpg.noise_sigma: 0.5, ddpg.tau: 0.005, ddpg.weight_decay: 1.0e-05, env.dd_lambda: 0.25,
+  env.reward: dsr, env.risk_lambda: 0.05, portfolio.window: 5}"

@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finsearch"
+version = "1.0.0"
+description = "Deep RL (DQN & DDPG) for NIFTY50 stock trading and portfolio optimisation"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["finsearch*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

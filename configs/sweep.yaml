@@ -1,0 +1,39 @@
+# Hyper-parameter search spaces for scripts/tune.py.
+#
+# Random search: `n_configs` configurations are sampled (fixed `seed`, so the
+# sweep is reproducible); configuration 0 is always the unmodified default.
+# Every configuration is trained with `experiment.tune_seeds` seeds and scored
+# by mean VALIDATION Sharpe — the test split is never consulted.
+#
+# Reward shaping (env.reward / risk_lambda / dd_lambda) is searched jointly
+# with the agent's own hyper-parameters.
+
+n_configs: 16
+seed: 2026
+
+dqn:
+  env.reward: [log_return, risk_adjusted, drawdown, dsr]
+  env.risk_lambda: [0.05, 0.1, 0.2]
+  env.dd_lambda: [0.25, 0.5, 1.0]
+  env.window: [5, 10, 20]
+  trading.positions: [[0.0, 1.0], [0.0, 0.5, 1.0], [0.0, 0.25, 0.5, 0.75, 1.0]]
+  dqn.lr: [1.0e-4, 3.0e-4, 1.0e-3]
+  dqn.gamma: [0.9, 0.95, 0.99]
+  dqn.hidden: [[128, 64], [256, 128], [256, 256]]
+  dqn.target_update: [500, 1000, 2000]
+  dqn.batch_size: [64, 128, 256]
+  dqn.eps_decay_steps: [20000, 40000, 60000]
+  dqn.dueling: [true, false]
+
+ddpg:
+  env.reward: [log_return, risk_adjusted, drawdown, dsr]
+  env.risk_lambda: [0.05, 0.1, 0.2]
+  env.dd_lambda: [0.25, 0.5, 1.0]
+  portfolio.window: [3, 5, 10]
+  ddpg.actor_lr: [3.0e-5, 1.0e-4, 3.0e-4]
+  ddpg.critic_lr: [3.0e-4, 1.0e-3]
+  ddpg.gamma: [0.9, 0.95, 0.99]
+  ddpg.tau: [0.001, 0.005, 0.01]
+  ddpg.noise_sigma: [0.25, 0.5, 1.0]
+  ddpg.batch_size: [64, 128, 256]
+  ddpg.weight_decay: [0.0, 1.0e-5]

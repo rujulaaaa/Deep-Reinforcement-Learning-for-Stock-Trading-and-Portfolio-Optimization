@@ -1,0 +1,98 @@
+# =====================================================================
+# FinSearch End-Term — single source of truth for every hyperparameter.
+# Any key can be overridden from the CLI:  --set dqn.lr=3e-4 env.cost=0.002
+# =====================================================================
+
+data:
+  # 20 NIFTY50 constituents with continuous listings since 2010 (see README
+  # "Limitations" for the survivorship-bias caveat this introduces).
+  tickers: [RELIANCE.NS, TCS.NS, HDFCBANK.NS, INFY.NS, ICICIBANK.NS,
+            HINDUNILVR.NS, ITC.NS, SBIN.NS, BHARTIARTL.NS, KOTAKBANK.NS,
+            LT.NS, AXISBANK.NS, ASIANPAINT.NS, MARUTI.NS, SUNPHARMA.NS,
+            TITAN.NS, ULTRACEMCO.NS, BAJFINANCE.NS, NESTLEIND.NS, WIPRO.NS]
+  index: ^NSEI                      # NIFTY 50 index, used as a market benchmark
+  start: "2010-01-01"
+  end: "2026-11-01"
+  raw_dir: data/raw
+  # Strictly chronological split — no shuffling across time.
+  train_end: "2020-12-31"           # train : 2010 → 2020 (incl. COVID crash)
+  val_end: "2022-12-31"             # val   : 2021 → 2022 (model selection / tuning)
+                                    # test  : 2023 → end  (touched once, at the very end)
+  clip: 5.0                         # clip z-scored features to ±clip
+
+env:
+  window: 10                        # days of feature history in each observation
+  cost: 0.001                       # proportional transaction cost (brokerage + STT + slippage)
+  initial_cash: 1000000.0           # ₹10 lakh
+  episode_length: 252               # training episodes = random 1-year segments
+  # Reward shaping (see finsearch/envs/rewards.py)
+  reward: risk_adjusted             # log_return | risk_adjusted | drawdown | dsr
+  risk_lambda: 0.1                  # variance penalty weight (risk_adjusted)
+  dd_lambda: 0.5                    # drawdown-increase penalty (drawdown)
+  dsr_eta: 0.01                     # EMA rate of the differential Sharpe ratio (dsr)
+  reward_scale: 100.0               # log-returns are ~1e-2; scale to O(1) for the critic
+
+trading:                            # single-stock environment used by DQN
+  positions: [0.0, 0.5, 1.0]        # discrete target exposures (long-only, NSE cash market)
+
+portfolio:                          # multi-stock environment used by DDPG
+  window: 5                         # shorter history: obs dim = N * F * window
+
+dqn:
+  hidden: [256, 128]
+  dueling: true
+  double: true
+  lr: 3.0e-4
+  gamma: 0.95
+  batch_size: 128
+  buffer_size: 100000
+  learning_starts: 2000
+  train_freq: 1
+  target_update: 1000               # hard update period (gradient steps); ignored if tau > 0
+  tau: 0.0
+  eps_start: 1.0
+  eps_end: 0.05
+  eps_decay_steps: 40000
+  max_grad_norm: 10.0
+  total_steps: 100000
+
+ddpg:
+  actor_hidden: [256, 128]
+  critic_hidden: [256, 128]
+  actor_lr: 1.0e-4
+  critic_lr: 1.0e-3
+  gamma: 0.95
+  tau: 0.005
+  batch_size: 128
+  buffer_size: 100000
+  learning_starts: 2000
+  train_freq: 2                     # one gradient step every 2 env steps
+  noise_sigma: 0.5                  # Gaussian noise on pre-softmax logits
+  noise_sigma_end: 0.05
+  noise_decay_steps: 40000
+  weight_decay: 0.0
+  max_grad_norm: 5.0
+  total_steps: 50000
+
+train:
+  eval_every: 5000                  # validate this often and keep the best checkpoint
+  device: cpu                       # tiny MLPs run faster on CPU than via GPU transfers
+
+baselines:
+  arima_orders: [[1, 0, 0], [0, 0, 1], [1, 0, 1], [2, 0, 0], [2, 0, 1], [2, 0, 2]]
+  lstm:
+    hidden: 64
+    layers: 1
+    dropout: 0.1
+    lr: 1.0e-3
+    epochs: 30
+    batch_size: 256
+    patience: 5
+  threshold: 0.0                    # go long when forecast return > threshold
+  top_k: 5                          # portfolio baselines hold top-k forecasts
+
+experiment:
+  n_seeds: 30                       # final test runs per method
+  tune_seeds: 3                     # seeds per hyper-parameter configuration
+  workers: 12
+  results_dir: results
